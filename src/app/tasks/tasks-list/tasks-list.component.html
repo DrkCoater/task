@@ -1,0 +1,13 @@
+<ul class="list-group">
+    <li *ngFor="let task of tasks" class="list-group-item">
+        <input type="checkbox"
+               class="list-child done-cb"
+               title="complete"
+               (change)="onTaskChange($event,task)"
+               [checked]="task.completed">
+        <span ngClass="{{task.completed ? 'name completed' : 'name' }}">{{ task.name }}</span>
+        &nbsp;
+        <span class="badge badge-pill {{ getDueDateLabel(task) }}">{{ task.dueDate }}</span>
+        <button type="button" class="btn btn-danger float-right" (click)="onTaskDelete(task)">Delete</button>
+    </li>
+</ul>
